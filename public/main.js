@@ -89,7 +89,7 @@ fetch('/data/company-data.json')
         console.error("❌ Failed to load company data:", error);
     });
 
-// ✅ Делегированный обработчик кнопки закрытия тултипа
+// Один делегированный обработчик для закрытия тултипа
 tooltip.addEventListener('click', (event) => {
     const closeBtn = event.target.closest('#close-tooltip');
     if (closeBtn) {
@@ -97,16 +97,26 @@ tooltip.addEventListener('click', (event) => {
         tooltip.classList.remove('show');
         tooltip.innerHTML = '';
 
-        // 🔁 Если мышка всё ещё над кружком — триггерим повторный hover
-        const hovered = document.querySelector('.company-circle:hover');
-        if (hovered) {
-            const evt = new MouseEvent('mousemove', {
-                bubbles: true,
-                cancelable: true,
-                view: window,
-            });
-            hovered.dispatchEvent(evt);
-        }
+        // Принудительно активируем hover, если мышка всё ещё над кружком
+        const eventFake = new MouseEvent('mousemove', {
+            bubbles: true,
+            cancelable: true,
+            view: window,
+            clientX: event.clientX,
+            clientY: event.clientY,
+        });
+
+        document.querySelectorAll('.company-circle').forEach(circle => {
+            const rect = circle.getBoundingClientRect();
+            if (
+                event.clientX >= rect.left &&
+                event.clientX <= rect.right &&
+                event.clientY >= rect.top &&
+                event.clientY <= rect.bottom
+            ) {
+                circle.dispatchEvent(eventFake);
+            }
+        });
     }
 });
 
