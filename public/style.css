@@ -53,5 +53,23 @@ svg {
     position: relative;
     z-index: 1000;
     pointer-events: auto;
+}
+
+#tooltip #close-tooltip {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    background: transparent;
+    border: 0;
+    color: #fff;
     cursor:pointer;
+}
+
+
+#tooltip td {
+    padding-top: 4px;
+}
+
+#tooltip td:nth-child(n+2) {
+    padding-left: 8px
 }
