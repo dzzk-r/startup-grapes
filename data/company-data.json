@@ -1,0 +1,197 @@
+{
+  "Taboola": {
+    rev: "$885K",
+    employees: 1500,
+    hq: "Tel Aviv",
+    founded: 2007,
+    valuation: "$2.5B (2023)",
+    stock: "$4.32 (July 2024)"
+  },
+  "Palo Alto Networks": {
+    rev: "$592.6K",
+    employees: 12500,
+    hq: "Santa Clara",
+    founded: 2005,
+    valuation: "$100B+",
+    stock: "$311.50 (July 2024)"
+  },
+  "Playtika": {
+    rev: "$648.3K",
+    employees: 2000,
+    hq: "Herzliya",
+    founded: 2010,
+    valuation: "$3.1B (2024 est.)",
+    stock: "$8.60 (July 2024)"
+  },
+  "Wiz": {
+    rev: "$250.6K",
+    employees: 900,
+    hq: "Tel Aviv",
+    founded: 2020,
+    valuation: "$12B (Feb 2024)",
+    stock: "Private"
+  },
+  "Mobileye": {
+    rev: "$423.1K",
+    employees: 3500,
+    hq: "Jerusalem",
+    founded: 1999,
+    source: "https://ir.mobileye.com/static-files/7b38284d-4a3a-4b38-a4a3-3b0cf802a378 (2024)",
+    valuation: "$34B (Intel spin-off 2023)",
+    stock: "$27.83 (July 2024)"
+  },
+  "Wix.com": {
+    rev: "$333.5K",
+    employees: 5300,
+    hq: "Tel Aviv",
+    founded: 2006,
+    source: "https://investors.wix.com/ir-home/default.aspx (2024)",
+    valuation: "$6B (2024)",
+    stock: "$94.25 (July 2024)"
+  },
+  "Check Point": {
+    rev: "$384.9K",
+    employees: 6100,
+    hq: "Tel Aviv",
+    founded: 1993,
+    source: "https://www.checkpoint.com/about-us/ (2024)",
+    valuation: "$17B (2024)",
+    stock: "$140.50 (July 2024)"
+  },
+  "Papaya Global": {
+    rev: "$305.6K",
+    employees: 740,
+    hq: "Tel Aviv",
+    founded: 2016,
+    source: "https://craft.co/papaya-global (est. 2024)",
+    valuation: "$3.7B (2024)",
+    stock: "Private"
+  },
+  "Via": {
+    rev: "$280K",
+    employees: 1200,
+    hq: "New York",
+    founded: 2012,
+    source: "https://www.crunchbase.com/organization/ridewithvia (est. 2024)",
+    valuation: "$3.5B (2023)",
+    stock: "Private"
+  },
+  "WalkMe": {
+    rev: "$278.1K",
+    employees: 1000,
+    hq: "Tel Aviv",
+    founded: 2011,
+    source: "https://www.walkme.com/about-us/ (2024)",
+    valuation: "$700M (2024)",
+    stock: "$8.15 (July 2024)"
+  },
+  "Lightricks": {
+    rev: "$300K",
+    employees: 450,
+    hq: "Jerusalem",
+    founded: 2013,
+    source: "https://www.lightricks.com/about (2024 est.)",
+    valuation: "$1.8B (2023)",
+    stock: "Private"
+  },
+  "AppsFlyer": {
+    rev: "$230.8K",
+    employees: 1200,
+    hq: "Herzliya",
+    founded: 2011,
+    source: "https://www.crunchbase.com/organization/appsflyer (2024 est.)",
+    valuation: "$2B (2024)",
+    stock: "Private"
+  },
+  "JFrog": {
+    rev: "$267.8K",
+    employees: 1500,
+    hq: "Sunnyvale",
+    founded: 2008,
+    source: "https://investors.jfrog.com/ (2024)",
+    valuation: "$3.3B (2024)",
+    stock: "$30.15 (July 2024)"
+  },
+  "Riskified": {
+    rev: "$472.6K",
+    employees: 720,
+    hq: "New York / Tel Aviv",
+    founded: 2013,
+    source: "https://www.riskified.com/about-us/ (2024)",
+    valuation: "$1.2B (2024)",
+    stock: "$6.87 (July 2024)"
+  },
+  "Fiverr": {
+    rev: "$514K",
+    employees: 790,
+    hq: "Tel Aviv",
+    founded: 2010,
+    source: "https://investors.fiverr.com/ (2024)",
+    valuation: "$1.5B (2024)",
+    stock: "$25.90 (July 2024)"
+  },
+  "Rapyd": {
+    rev: "$444.4K",
+    employees: 800,
+    hq: "Tel Aviv / London",
+    founded: 2016,
+    source: "https://www.rapyd.net/about/ (2024 est.)",
+    valuation: "$8.7B (2024)",
+    stock: "Private"
+  },
+  "IronSource": {
+    rev: "$493.3K",
+    employees: 1100,
+    hq: "Tel Aviv",
+    founded: 2010,
+    source: "https://craft.co/ironsource (2024 est.)",
+    valuation: "Merged with Unity (2022)",
+    stock: "See Unity"
+  },
+  "monday.com": {
+    rev: "$360.5K",
+    employees: 1800,
+    hq: "Tel Aviv",
+    founded: 2012,
+    source: "https://ir.monday.com/ (2024)",
+    valuation: "$8.4B (2024)",
+    stock: "$198.40 (July 2024)"
+  },
+  "Viber": {
+    rev: "$428.6K",
+    employees: 350,
+    hq: "London / Tel Aviv / Minsk",
+    founded: 2010,
+    source: "https://www.viber.com/en/about/ (2024 est.)",
+    valuation: "Part of Rakuten",
+    stock: "Private"
+  },
+  "Cybereason": {
+    rev: "$180K",
+    employees: 500,
+    hq: "Boston / Tel Aviv",
+    founded: 2012,
+    source: "https://www.cybereason.com/company (2024 est.)",
+    valuation: "$3.1B (2022)",
+    stock: "Private"
+  },
+  "SimilarWeb": {
+    rev: "$230.3K",
+    employees: 1000,
+    hq: "Tel Aviv",
+    founded: 2007,
+    source: "https://ir.similarweb.com/ (2024)",
+    valuation: "$800M (2024)",
+    stock: "$6.70 (July 2024)"
+  },
+  "Checkmarx": {
+    rev: "$187.5K",
+    employees: 800,
+    hq: "Ramat Gan",
+    founded: 2006,
+    source: "https://www.checkmarx.com/about-us/ (2024)",
+    valuation: "$1.5B (2024 est.)",
+    stock: "Private"
+  }
+};
+
