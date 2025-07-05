@@ -1,5 +1,10 @@
 # 🍇 Startup Grapes
 
+[![Vercel](https://vercelbadge.vercel.app/api/dzzk-r/startup-grapes)](https://startup-grapes.vercel.app)
+![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)
+![Last Commit](https://img.shields.io/github/last-commit/dzzk-r/startup-grapes)
+![Repo Size](https://img.shields.io/github/repo-size/dzzk-r/startup-grapes)
+
 **A visual overview of Israel's top tech companies by revenue per employee.**  
 Hover. Click. Explore the financial grapes of Israeli innovation.
 
