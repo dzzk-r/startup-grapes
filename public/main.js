@@ -61,6 +61,7 @@ fetch('/data/company-data.json')
             circle.addEventListener('click', (event) => {
                 if (data) {
                     fixedTooltip = true;
+                    const rect = circle.getBoundingClientRect();
                     tooltip.innerHTML = `
             <h4 class="name">${name}</h4>
             <table><tbody>
@@ -75,8 +76,8 @@ fetch('/data/company-data.json')
             <button id="close-tooltip">✖</button>
           `;
                     tooltip.classList.add('show');
-                    tooltip.style.left = `${event.pageX + 15}px`;
-                    tooltip.style.top = `${event.pageY + 15}px`;
+                    tooltip.style.left = `${rect.right + 10}px`;
+                    tooltip.style.top = `${rect.top + window.scrollY}px`;
 
                     tooltip.style.overflowY = 'auto';
                     tooltip.style.maxHeight = '250px';
