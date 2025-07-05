@@ -48,6 +48,7 @@ svg {
     margin-top: 0;
 }
 
+#tooltip > * ,
 #tooltip #close-tooltip {
     position: relative;
     z-index: 1000;
