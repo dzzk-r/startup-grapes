@@ -18,6 +18,7 @@
 
 const tooltip = document.getElementById('tooltip');
 let companyData = {};
+let fixedTooltip = false;
 
 fetch('/data/company-data.json')
     .then((response) => {
@@ -29,11 +30,37 @@ fetch('/data/company-data.json')
         console.log("✅ companyData loaded");
 
         document.querySelectorAll('.company-circle').forEach(circle => {
-            circle.addEventListener('mouseenter', () => {
-                const name = circle.getAttribute('data-name');
-                const data = companyData[name];
+            const name = circle.getAttribute('data-name');
+            const data = companyData[name];
 
+            circle.addEventListener('mouseenter', (e) => {
+                if (!fixedTooltip && data) {
+                    tooltip.innerHTML = `
+            <h4 class="name">${name}</h4>
+            <div>Revenue/employee: ${data.rev || "?"}</div>
+          `;
+                    tooltip.classList.add('show');
+                    tooltip.style.left = `${e.pageX + 15}px`;
+                    tooltip.style.top = `${e.pageY + 15}px`;
+                }
+            });
+
+            circle.addEventListener('mousemove', e => {
+                if (!fixedTooltip) {
+                    tooltip.style.left = `${e.pageX + 15}px`;
+                    tooltip.style.top = `${e.pageY + 15}px`;
+                }
+            });
+
+            circle.addEventListener('mouseleave', () => {
+                if (!fixedTooltip) {
+                    tooltip.classList.remove('show');
+                }
+            });
+
+            circle.addEventListener('click', () => {
                 if (data) {
+                    fixedTooltip = true;
                     tooltip.innerHTML = `
             <h4 class="name">${name}</h4>
             <table><tbody>
@@ -45,19 +72,22 @@ fetch('/data/company-data.json')
               <tr><td>Stock</td><td>${data.stock || "?"}</td></tr>
               <tr><td>Source</td><td>${data.source ? `<a href="${data.source}" target="_blank">link</a>` : "?"}</td></tr>
             </tbody></table>
+            <button id="close-tooltip">✖</button>
           `;
                     tooltip.classList.add('show');
+                    tooltip.style.left = `${event.pageX + 15}px`;
+                    tooltip.style.top = `${event.pageY + 15}px`;
+
+                    // allow scrolling if content is large
+                    tooltip.style.overflowY = 'auto';
+                    tooltip.style.maxHeight = '250px';
+
+                    document.getElementById('close-tooltip').addEventListener('click', () => {
+                        fixedTooltip = false;
+                        tooltip.classList.remove('show');
+                        tooltip.innerHTML = "";
+                    });
                 }
-            });
-
-            circle.addEventListener('mousemove', e => {
-                tooltip.style.left = `${e.pageX + 15}px`;
-                tooltip.style.top = `${e.pageY + 15}px`;
-                tooltip.style.transform = `translate(${15}px, ${15}px)`;
-            });
-
-            circle.addEventListener('mouseleave', () => {
-                tooltip.classList.remove('show');
             });
         });
     })
