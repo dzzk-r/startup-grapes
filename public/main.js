@@ -87,7 +87,15 @@ fetch('/data/company-data.json')
                     document.getElementById('close-tooltip').addEventListener('click', () => {
                         fixedTooltip = false;
                         tooltip.classList.remove('show');
-                        tooltip.innerHTML = "";
+                        tooltip.innerHTML = ""; // очищаем содержимое
+
+                        // Принудительно перезапускаем hover эффект (если мышка уже над элементом)
+                        const event = new MouseEvent('mousemove', {
+                            bubbles: true,
+                            cancelable: true,
+                            view: window,
+                        });
+                        circle.dispatchEvent(event);
                     });
                 }
             });
