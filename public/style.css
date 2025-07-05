@@ -47,3 +47,10 @@ svg {
 #tooltip h4.name {
     margin-top: 0;
 }
+
+#tooltip #close-tooltip {
+    position: relative;
+    z-index: 1000;
+    pointer-events: auto;
+    cursor:pointer;
+}
