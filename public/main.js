@@ -37,9 +37,9 @@ fetch('/data/company-data.json')
             circle.addEventListener('mouseenter', (e) => {
                 if (!fixedTooltip && data) {
                     tooltip.innerHTML = `
-            <h4 class="name">${name}</h4>
-            <div>Revenue/employee: ${data.rev || "?"}</div>
-          `;
+                        <h4 class="name">${name}</h4>
+                        <div>Revenue/employee: ${data.rev || "?"}</div>
+                    `;
                     tooltip.classList.add('show');
                     positionTooltip(e);
                 }
@@ -64,54 +64,23 @@ fetch('/data/company-data.json')
                     const containerRect = container.getBoundingClientRect();
 
                     tooltip.innerHTML = `
-            <h4 class="name">${name}</h4>
-            <table><tbody>
-              <tr><td>Revenue/employee</td><td>${data.rev || "?"}</td></tr>
-              <tr><td>Employees</td><td>${data.employees ?? "?"}</td></tr>
-              <tr><td>HQ</td><td>${data.hq || "?"}</td></tr>
-              <tr><td>Founded</td><td>${data.founded || "?"}</td></tr>
-              <tr><td>Valuation</td><td>${data.valuation || "?"}</td></tr>
-              <tr><td>Stock</td><td>${data.stock || "?"}</td></tr>
-              <tr><td>Source</td><td>${data.source ? `<a href="${data.source}" target="_blank">link</a>` : "?"}</td></tr>
-            </tbody></table>
-            <button id="close-tooltip">✖</button>
-          `;
+                        <h4 class="name">${name}</h4>
+                        <table><tbody>
+                          <tr><td>Revenue/employee</td><td>${data.rev || "?"}</td></tr>
+                          <tr><td>Employees</td><td>${data.employees ?? "?"}</td></tr>
+                          <tr><td>HQ</td><td>${data.hq || "?"}</td></tr>
+                          <tr><td>Founded</td><td>${data.founded || "?"}</td></tr>
+                          <tr><td>Valuation</td><td>${data.valuation || "?"}</td></tr>
+                          <tr><td>Stock</td><td>${data.stock || "?"}</td></tr>
+                          <tr><td>Source</td><td>${data.source ? `<a href="${data.source}" target="_blank">link</a>` : "?"}</td></tr>
+                        </tbody></table>
+                        <button id="close-tooltip">✖</button>
+                    `;
                     tooltip.classList.add('show');
-
                     tooltip.style.left = `${rect.right - containerRect.left + 10}px`;
                     tooltip.style.top = `${rect.top - containerRect.top + 10}px`;
-
                     tooltip.style.overflowY = 'auto';
                     tooltip.style.maxHeight = '250px';
-
-                    // Делегированный обработчик для кнопки закрытия тултипа
-                    tooltip.addEventListener('click', (event) => {
-                        const closeBtn = event.target.closest('#close-tooltip');
-                        if (closeBtn) {
-                            fixedTooltip = false;
-                            tooltip.classList.remove('show');
-                            tooltip.innerHTML = '';
-
-                            // Принудительно активируем hover (если мышка над кругом)
-                            const eventFake = new MouseEvent('mousemove', {
-                                bubbles: true,
-                                cancelable: true,
-                                view: window,
-                            });
-
-                            document.querySelectorAll('.company-circle').forEach(circle => {
-                                const rect = circle.getBoundingClientRect();
-                                if (
-                                    event.clientX >= rect.left &&
-                                    event.clientX <= rect.right &&
-                                    event.clientY >= rect.top &&
-                                    event.clientY <= rect.bottom
-                                ) {
-                                    circle.dispatchEvent(eventFake);
-                                }
-                            });
-                        }
-                    });
                 }
             });
         });
@@ -119,6 +88,27 @@ fetch('/data/company-data.json')
     .catch((error) => {
         console.error("❌ Failed to load company data:", error);
     });
+
+// ✅ Делегированный обработчик кнопки закрытия тултипа
+tooltip.addEventListener('click', (event) => {
+    const closeBtn = event.target.closest('#close-tooltip');
+    if (closeBtn) {
+        fixedTooltip = false;
+        tooltip.classList.remove('show');
+        tooltip.innerHTML = '';
+
+        // 🔁 Если мышка всё ещё над кружком — триггерим повторный hover
+        const hovered = document.querySelector('.company-circle:hover');
+        if (hovered) {
+            const evt = new MouseEvent('mousemove', {
+                bubbles: true,
+                cancelable: true,
+                view: window,
+            });
+            hovered.dispatchEvent(evt);
+        }
+    }
+});
 
 function positionTooltip(e) {
     const containerRect = container.getBoundingClientRect();
