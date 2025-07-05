@@ -17,6 +17,7 @@
 //   });
 
 const tooltip = document.getElementById('tooltip');
+const container = document.querySelector('.container');
 let companyData = {};
 let fixedTooltip = false;
 
@@ -40,15 +41,13 @@ fetch('/data/company-data.json')
             <div>Revenue/employee: ${data.rev || "?"}</div>
           `;
                     tooltip.classList.add('show');
-                    tooltip.style.left = `${e.pageX + 15}px`;
-                    tooltip.style.top = `${e.pageY + 15}px`;
+                    positionTooltip(e);
                 }
             });
 
             circle.addEventListener('mousemove', e => {
                 if (!fixedTooltip) {
-                    tooltip.style.left = `${e.pageX + 15}px`;
-                    tooltip.style.top = `${e.pageY + 15}px`;
+                    positionTooltip(e);
                 }
             });
 
@@ -62,6 +61,8 @@ fetch('/data/company-data.json')
                 if (data) {
                     fixedTooltip = true;
                     const rect = circle.getBoundingClientRect();
+                    const containerRect = container.getBoundingClientRect();
+
                     tooltip.innerHTML = `
             <h4 class="name">${name}</h4>
             <table><tbody>
@@ -76,8 +77,9 @@ fetch('/data/company-data.json')
             <button id="close-tooltip">✖</button>
           `;
                     tooltip.classList.add('show');
-                    tooltip.style.left = `${rect.right + 10}px`;
-                    tooltip.style.top = `${rect.top + window.scrollY}px`;
+
+                    tooltip.style.left = `${rect.right - containerRect.left + 10}px`;
+                    tooltip.style.top = `${rect.top - containerRect.top + 10}px`;
 
                     tooltip.style.overflowY = 'auto';
                     tooltip.style.maxHeight = '250px';
@@ -94,3 +96,11 @@ fetch('/data/company-data.json')
     .catch((error) => {
         console.error("❌ Failed to load company data:", error);
     });
+
+function positionTooltip(e) {
+    const containerRect = container.getBoundingClientRect();
+    const x = e.clientX - containerRect.left + 15;
+    const y = e.clientY - containerRect.top + 15;
+    tooltip.style.left = `${x}px`;
+    tooltip.style.top = `${y}px`;
+}
