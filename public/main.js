@@ -1,21 +1,3 @@
-// let companyData = {};
-// import companyData from './data/company-data.json' assert { type: "json" };
-
-// fetch('https://startup-grapes.vercel.app/data/company-data.json')
-//   .then((response) => {
-//     if (!response.ok) throw new Error("Network response was not ok");
-//     return response.json();
-//   })
-//   .then((data) => {
-//     companyData = data;
-//     // 👇 например, перерисовать визуализацию или таблицу
-//     console.log("Данные загружены:", companyData);
-//     updateChart(companyData); // или другой метод
-//   })
-//   .catch((error) => {
-//     console.error("Ошибка загрузки JSON:", error);
-//   });
-
 const tooltip = document.getElementById('tooltip');
 const container = document.querySelector('.container');
 let companyData = {};
@@ -81,53 +63,17 @@ fetch('/data/company-data.json')
                     tooltip.style.top = `${rect.top - containerRect.top + 10}px`;
                     tooltip.style.overflowY = 'auto';
                     tooltip.style.maxHeight = '250px';
-
-                    // 🔧 Надёжно добавляем обработчик после рендера DOM
-                    requestAnimationFrame(() => {
-                        const closeBtn = document.getElementById('close-tooltip');
-                        if (closeBtn) {
-                            closeBtn.addEventListener('click', (e) => {
-                                fixedTooltip = false;
-                                tooltip.classList.remove('show');
-                                tooltip.innerHTML = "";
-
-                                // Эмуляция события наведения мыши, если курсор над кругом
-                                const eventFake = new MouseEvent('mousemove', {
-                                    bubbles: true,
-                                    cancelable: true,
-                                    view: window,
-                                    clientX: event.clientX,
-                                    clientY: event.clientY
-                                });
-
-                                document.querySelectorAll('.company-circle').forEach(circle => {
-                                    const rect = circle.getBoundingClientRect();
-                                    if (
-                                        event.clientX >= rect.left &&
-                                        event.clientX <= rect.right &&
-                                        event.clientY >= rect.top &&
-                                        event.clientY <= rect.bottom
-                                    ) {
-                                        circle.dispatchEvent(eventFake);
-                                    }
-                                });
-                            });
-                        } else {
-                            console.warn("❗️close-tooltip button not found in DOM");
-                        }
-                    });
                 }
-            })
-        })
+            });
+        });
     })
     .catch((error) => {
         console.error("❌ Failed to load company data:", error);
     });
 
-// Один делегированный обработчик для закрытия тултипа
+// Делегированный обработчик для всех кликов внутри тултипа
 tooltip.addEventListener('click', (event) => {
-    const closeBtn = event.target.closest('#close-tooltip');
-    if (closeBtn) {
+    if (event.target && event.target.id === 'close-tooltip') {
         fixedTooltip = false;
         tooltip.classList.remove('show');
         tooltip.innerHTML = '';
