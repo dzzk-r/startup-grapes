@@ -58,7 +58,7 @@ fetch('/data/company-data.json')
                 }
             });
 
-            circle.addEventListener('click', () => {
+            circle.addEventListener('click', (event) => {
                 if (data) {
                     fixedTooltip = true;
                     tooltip.innerHTML = `
@@ -78,7 +78,6 @@ fetch('/data/company-data.json')
                     tooltip.style.left = `${event.pageX + 15}px`;
                     tooltip.style.top = `${event.pageY + 15}px`;
 
-                    // allow scrolling if content is large
                     tooltip.style.overflowY = 'auto';
                     tooltip.style.maxHeight = '250px';
 
