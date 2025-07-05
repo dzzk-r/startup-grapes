@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    background: #111;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 100%;
+    width: 1024px;
+    position: relative;
+}
+
+svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.company-circle {
+    fill: transparent;
+    cursor: pointer;
+}
+
+#tooltip {
+    position: absolute;
+    z-index: 100;
+    pointer-events: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-family: sans-serif;
+    white-space: nowrap;
+    color: rgba(255,255,255,.8);
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 6px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease, transform 1s ease;
+    transform: translate(0, 0);
+}
+
+#tooltip.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#tooltip h4.name {
+    margin-top: 0;
+}
