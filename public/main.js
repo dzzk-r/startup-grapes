@@ -84,18 +84,33 @@ fetch('/data/company-data.json')
                     tooltip.style.overflowY = 'auto';
                     tooltip.style.maxHeight = '250px';
 
-                    document.getElementById('close-tooltip').addEventListener('click', () => {
-                        fixedTooltip = false;
-                        tooltip.classList.remove('show');
-                        tooltip.innerHTML = ""; // очищаем содержимое
+                    // Делегированный обработчик для кнопки закрытия тултипа
+                    tooltip.addEventListener('click', (event) => {
+                        const closeBtn = event.target.closest('#close-tooltip');
+                        if (closeBtn) {
+                            fixedTooltip = false;
+                            tooltip.classList.remove('show');
+                            tooltip.innerHTML = '';
 
-                        // Принудительно перезапускаем hover эффект (если мышка уже над элементом)
-                        const event = new MouseEvent('mousemove', {
-                            bubbles: true,
-                            cancelable: true,
-                            view: window,
-                        });
-                        circle.dispatchEvent(event);
+                            // Принудительно активируем hover (если мышка над кругом)
+                            const eventFake = new MouseEvent('mousemove', {
+                                bubbles: true,
+                                cancelable: true,
+                                view: window,
+                            });
+
+                            document.querySelectorAll('.company-circle').forEach(circle => {
+                                const rect = circle.getBoundingClientRect();
+                                if (
+                                    event.clientX >= rect.left &&
+                                    event.clientX <= rect.right &&
+                                    event.clientY >= rect.top &&
+                                    event.clientY <= rect.bottom
+                                ) {
+                                    circle.dispatchEvent(eventFake);
+                                }
+                            });
+                        }
                     });
                 }
             });
