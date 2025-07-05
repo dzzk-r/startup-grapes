@@ -53,7 +53,8 @@ This project is also a warm-up to more serious ML+Data Viz efforts.
 ## 📎 About the Author
 
 Made by **Daniel Chechik**  
-[LinkedIn](https://www.linkedin.com/in/daniel-chechik) | [GitHub](https://github.com/dzzk-r)
+[LinkedIn](https://www.linkedin.com/in/bovemayse) | [GitHub](https://github.com/dzzk-r)
+
 
 ---
 
