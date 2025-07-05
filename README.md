@@ -10,6 +10,8 @@ Hover. Click. Explore the financial grapes of Israeli innovation.
 
 [🌐 Live demo →](https://startup-grapes.vercel.app)
 
+[](https://i.imgur.com/DdUBIwc.png)
+
 ---
 
 ## 🧠 What is this?
