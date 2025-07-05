@@ -2,6 +2,7 @@ const tooltip = document.getElementById('tooltip');
 const container = document.querySelector('.container');
 let companyData = {};
 let fixedTooltip = false;
+let lastMouseEvent = null;
 
 fetch('/data/company-data.json')
     .then((response) => {
@@ -29,6 +30,7 @@ fetch('/data/company-data.json')
 
             circle.addEventListener('mousemove', e => {
                 if (!fixedTooltip) {
+                    lastMouseEvent = e;
                     positionTooltip(e);
                 }
             });
@@ -41,9 +43,12 @@ fetch('/data/company-data.json')
 
             circle.addEventListener('click', (event) => {
                 if (data) {
+                    if (lastMouseEvent) {
+                        positionTooltip(lastMouseEvent);
+                    }
                     fixedTooltip = true;
-                    const rect = circle.getBoundingClientRect();
-                    const containerRect = container.getBoundingClientRect();
+                    // const rect = circle.getBoundingClientRect();
+                    // const containerRect = container.getBoundingClientRect();
 
                     tooltip.innerHTML = `
                         <h4 class="name">${name}</h4>
@@ -59,8 +64,8 @@ fetch('/data/company-data.json')
                         <button id="close-tooltip">✖</button>
                     `;
                     tooltip.classList.add('show');
-                    tooltip.style.left = `${rect.right - containerRect.left + 10}px`;
-                    tooltip.style.top = `${rect.top - containerRect.top + 10}px`;
+                    // tooltip.style.left = `${rect.right - containerRect.left + 10}px`;
+                    // tooltip.style.top = `${rect.top - containerRect.top + 10}px`;
                     tooltip.style.overflowY = 'auto';
                     tooltip.style.maxHeight = '250px';
                 }
